@@ -1,0 +1,6 @@
+{
+    "presets": [
+        "@babel/preset-env",//changes code to be compatible with different browsers.
+        "@babel/preset-react"// make sure that JSX is transformed into JavaScript
+    ]
+}
