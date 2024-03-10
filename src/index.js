@@ -1,9 +1,5 @@
-// const root = document.getElementById('root');// found element 
-// const p = document.createElement('p');//created element 
-// p.innerText = "Hello From Khushi";
-
-// root.appendChild(p);// then appended element to root 
-
+import React from 'react'
+import ReactDOM from "react-dom"
 
 
 /** in React */
