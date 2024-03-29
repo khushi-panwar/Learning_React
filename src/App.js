@@ -1,26 +1,29 @@
-import React, {useState } from "react";
+import React, { useState } from "react";
 import Button from "./Button";
 import Text from "./Text";
 
 
 const App = () => {
-    const [data, setData] = useState([// useState = used to change the data 
-        {id:'a', text: 'text 1'},
-        {id:'b', text: 'text 2'},
-        {id:'c', text: 'text 3'},
-        {id:'d', text: 'text 4'},
-    ])
 
-    const addMoreData = () => {
-        console.log("i'm from parent");
-        setData((prevData) => [  ...prevData,{id:'e', text: 'text 5'}])
+    const [message, updateMessage] = useState(' hello user, good morning');//state variable
+    // let message = ' hello user, good morning';//normal variable  
+
+    const changeMessage = () => {
+        console.log('before update', message);
+        updateMessage((preData) => {//it is a asynchronous task only, also if we have multiple in single time , it batches the task (performs the batch operation) and execute them simultaneously
+            console.log("previous Data", preData);
+
+            return 'hello user, good afternoon'
+        });
+        console.log('after update', message);
     }
 
+    // console.log(updateMessage);//it is a dispatchSetState function , just to check
+
+    // only div part will get updated and rest will remain un-touched because of reconsigration algorithms and  react fiber playing behind the scene ! 
     return <>
-        {
-        data.map((item) => <Text key={data.id}>{item?.text}</Text>)
-        }
-        <Button clickAction={addMoreData}>add more data</Button>
+        <div>{message}</div> 
+        <button onClick={changeMessage}>Change message</button>
     </>
 }
 
